@@ -1,0 +1,72 @@
+<main>
+  <div class="container">
+       
+       <div class="middle">
+          <form (submit)="addNewPost()">
+              <div class="createPost">
+                <h3 class="mini-heading">Create Post</h3>
+                  <input type="text" placeholder="What's on your mind? NAME" #description style="padding: 30px;"> 
+
+                <div class="post-icon">                             
+                    <label for="attachment" id="attatchmentLabael"  class="custom-file-input">
+                      <i class="fa-regular fa-file"></i>
+                      File
+                      <input type="file" id="attachmentInput">  
+                    </label>
+                    <span class="">
+
+                    </span>
+                  <input type="submit" value="Post" class="btn btn-primary  ">
+                </div>
+              </div>
+
+            </form>
+      
+
+
+
+      <div class="feeds">
+        <div class="feed" *ngFor="let i of posts">            
+          <div class="head">
+              <div class="user">
+                  <div class="info">
+                      <h3></h3>
+                      <small>{{i.published}}</small>
+                  </div>
+              </div>
+              <span class="edit">
+                  <i class="uil uil-ellipsis-h"></i>
+              </span>
+          </div>
+  
+          <div class="photo">
+             <p>{{i.contenu}}</p>
+          </div>
+  
+          <div class="action-buttons">
+              <div class="interaction-buttons">
+                  <span class="like-btn"><i class="uil uil-heart"></i></span>
+                  <span class="comment-btn"><i class="uil uil-comment-dots"></i></span>
+              </div>
+          </div>
+  
+          <div class="comments">
+              <div class="comment-input">
+                  <input type="text" placeholder="Add a comment...">
+                  <button class="comment-submit">Post</button>
+              </div>
+              <div class="comment-list">
+                  <!-- Comment items will be dynamically added here -->
+              </div>
+          </div>
+      </div>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="calen">
+        <!-- <app-calendrier></app-calendrier> -->
+      </div>
+    </div>
+  </div>
+</main>

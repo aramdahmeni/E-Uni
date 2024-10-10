@@ -1,0 +1,25 @@
+security:
+    password_hashers:
+        App\Entity\User:
+            algorithm: auto
+    providers:
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: email  # Use email as the unique property for authentication
+    firewalls:
+        main: # Rename it to 'main', which is the default firewall name
+            pattern: ^/ # Restrict this firewall to all URLs
+            form_login: # Enable form-based authentication
+                login_path: app_login # Specify the login route
+                check_path: app_login # Specify the route where the login form data should be submitted
+                default_target_path: / # Redirect to this URL after successful login
+            logout: # Enable logout functionality
+                path: app_logout # Specify the logout route
+                target: /
+        api:
+            pattern: ^/api/
+            stateless: true
+    access_control:
+        - { path: ^/api/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/, roles: IS_AUTHENTICATED_FULLY }
